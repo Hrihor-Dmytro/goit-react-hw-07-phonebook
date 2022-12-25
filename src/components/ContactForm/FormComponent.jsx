@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from '../redux/selectors';
 import { addContact } from '../redux/operations';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import {
   FormLabel,
   FormInput,
@@ -18,7 +18,7 @@ const initialValues = {
 
 export const Form = () => {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
 
   const handleSubmit = (values, { resetForm }) => {
     resetForm();
@@ -34,11 +34,11 @@ export const Form = () => {
 
     dublicateContact
       ? alert(`${contact.name} is already in contacts`)
-      : dispatch(addContact({ ...values, id: nanoid() }));
+      : dispatch(addContact(values));
   };
 
-  const findDublicateContact = (contact, contactsList) => {
-    return contactsList.find(
+  const findDublicateContact = (contact, contacts) => {
+    return contacts.find(
       item => item.name.toLowerCase() === contact.name.toLowerCase()
     );
   };

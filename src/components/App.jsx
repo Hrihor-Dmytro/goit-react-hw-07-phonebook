@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getError, getIsLoading } from './redux/selectors';
 import { fetchContacts } from './redux/operations';
-
+import { Loader } from './Loader/Loader';
 export const App = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
@@ -16,6 +16,7 @@ export const App = () => {
   return (
     <div>
       <h1>Phone book</h1>
+      {isLoading && !error && <Loader />}
       <Form />
     </div>
   );
