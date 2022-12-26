@@ -40,7 +40,7 @@ export const ContactList = () => {
             <ContactTitle> {name} </ContactTitle>
             <ContactTel>{number}</ContactTel>
             <ContactButton type="button" onClick={() => deliteContact(id)}>
-              Delite
+              Delete
             </ContactButton>
           </SectionLi>
         );
