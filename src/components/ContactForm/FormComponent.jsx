@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from '../redux/selectors';
 import { addContact } from '../redux/operations';
 import toast, { Toaster } from 'react-hot-toast';
-// import { nanoid } from 'nanoid';
+
 import {
   FormLabel,
   FormInput,

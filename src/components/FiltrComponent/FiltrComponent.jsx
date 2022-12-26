@@ -1,6 +1,5 @@
 import { SectionList, FormLabel, Input } from './FiltrComponent.styled';
 import { useDispatch, useSelector } from 'react-redux';
-// import { getContactsValue, filterChange } from '../Redux/store';
 import { getFilter } from '../redux/selectors';
 import { filterChange } from '../redux/phonebookSlice';
 
