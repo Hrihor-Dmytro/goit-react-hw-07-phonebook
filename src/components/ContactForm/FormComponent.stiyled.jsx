@@ -14,6 +14,7 @@ export const FormWrapp = styled(Form)`
 export const FormLabel = styled.label`
   margin-right: 0;
   margin-bottom: 10px;
+  position: relative;
 `;
 export const TextBox = styled.p`
   margin: 10px;
@@ -54,3 +55,9 @@ export const FormButton = styled.button`
     border: 2px solid var(--text-color);
   }
 `;
+
+// export const TostPozition = styled.div`
+//   position: absolute;
+//   top: 10px;
+//   right: 10px;
+// `;

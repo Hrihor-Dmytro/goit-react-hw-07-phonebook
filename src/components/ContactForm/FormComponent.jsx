@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from '../redux/selectors';
 import { addContact } from '../redux/operations';
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster, ToastBar } from 'react-hot-toast';
 
 import {
   FormLabel,
@@ -50,8 +50,24 @@ export const Form = () => {
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <FormWrapp autoComplete="off">
         <FormLabel>
-          <Toaster />
-          <TextBox>Name</TextBox>
+          <Toaster
+            containerStyle={{
+              top: 10,
+            }}
+          >
+            {t => (
+              <ToastBar
+                toast={t}
+                style={{
+                  ...t.style,
+                  animation: t.visible
+                    ? 'custom-enter 1s ease'
+                    : 'custom-exit 1s ease',
+                }}
+              />
+            )}
+          </Toaster>
+          ;<TextBox>Name</TextBox>
           <FormInput
             type="text"
             name="name"
