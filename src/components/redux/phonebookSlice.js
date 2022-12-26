@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import { ContactButton } from 'components/ContactsList/ContactList.styled';
+import { fetchContacts, addContact, removeContact } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -34,6 +35,7 @@ export const phonebookSlice = createSlice({
       state.error = null;
     },
     [fetchContacts.rejected]: handleRejected,
+
     [addContact.pending]: handleRejected,
     [addContact.fulfilled]: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload.id);
@@ -41,13 +43,14 @@ export const phonebookSlice = createSlice({
       state.error = null;
     },
     [addContact.rejected]: handleRejected,
-    [deleteContact.pending]: handlePending,
-    [deleteContact.fulfilled]: (state, action) => {
+
+    [removeContact.pending]: handlePending,
+    [removeContact.fulfilled]: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload.id);
       state.isLoading = false;
       state.error = null;
     },
-    [deleteContact.rejected]: handleRejected,
+    [removeContact.rejected]: handleRejected,
   },
 });
 

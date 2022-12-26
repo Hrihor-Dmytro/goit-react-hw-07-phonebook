@@ -7,11 +7,15 @@ import {
 } from './ContactList.styled';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { getContactsValue, removeContact } from '../Redux/store';
+import { removeContact } from '../redux/operations';
+import { getContacts, getFilter } from '../redux/selectors';
+import { toast } from 'react-hot-toast';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const { contacts, filter } = useSelector(getContactsValue);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
+  const notify = () => toast.error('Contact deleted!');
 
   const getRequiredCard = () => {
     const normalizedFilter = filter.toLowerCase();
@@ -23,9 +27,11 @@ export const ContactList = () => {
 
   const deliteContact = contactId => {
     dispatch(removeContact(contactId));
+    notify();
   };
 
   const requiredCard = getRequiredCard();
+
   return (
     <SectionList>
       {requiredCard.map(({ id, name, number }) => {

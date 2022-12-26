@@ -2,6 +2,7 @@ import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from '../redux/selectors';
 import { addContact } from '../redux/operations';
+import toast, { Toaster } from 'react-hot-toast';
 // import { nanoid } from 'nanoid';
 import {
   FormLabel,
@@ -15,6 +16,7 @@ const initialValues = {
   name: '',
   number: '',
 };
+const notify = () => toast.success('Contact added!');
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ export const Form = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     resetForm();
+    notify();
 
     const { name, number } = values;
 
@@ -47,6 +50,7 @@ export const Form = () => {
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <FormWrapp autoComplete="off">
         <FormLabel>
+          <Toaster />
           <TextBox>Name</TextBox>
           <FormInput
             type="text"
