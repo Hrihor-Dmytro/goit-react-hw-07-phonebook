@@ -37,7 +37,7 @@ export const phonebookSlice = createSlice({
 
     [addContact.pending]: handleRejected,
     [addContact.fulfilled]: (state, action) => {
-      state.items = state.items.filter(item => item.id !== action.payload.id);
+      state.items.push(action.payload);
       state.isLoading = false;
       state.error = null;
     },
