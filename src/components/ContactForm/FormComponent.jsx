@@ -67,7 +67,7 @@ export const Form = () => {
               />
             )}
           </Toaster>
-          ;<TextBox>Name</TextBox>
+          <TextBox>Name</TextBox>
           <FormInput
             type="text"
             name="name"
